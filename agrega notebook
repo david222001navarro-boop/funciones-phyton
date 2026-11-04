@@ -1,0 +1,1870 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "f335332e",
+   "metadata": {},
+   "source": [
+    "# 30 funciones básicas de Python\n",
+    "\n",
+    "**Trabajo colaborativo · versión completa en un solo notebook**\n",
+    "\n",
+    "**Integrantes:** David Navarro (ID 37011), _diego gonzalez (ID 469993)_, _Integrante 3_  \n",
+    "**Asignatura:** Introducción a la Ciencia de Datos  \n",
+    "**Docente:** Carlos Andrés Gómez"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "605d1630",
+   "metadata": {},
+   "source": [
+    "## Introducción\n",
+    "\n",
+    "Python incluye funciones incorporadas (*built-in*) que están disponibles sin instalar librerías adicionales y que se usan en casi todos los programas. En este notebook se investigan y documentan **30 funciones básicas**. Para cada una se explica **para qué sirve**, su **sintaxis** y un **ejemplo práctico** con su resultado.\n",
+    "\n",
+    "El trabajo se dividió entre los integrantes. Cada parte se desarrolló en su propio notebook, y aquí se reúnen en una sola página.\n",
+    "\n",
+    "| Parte | Responsable | Funciones |\n",
+    "|---|---|---|\n",
+    "| 1 | David Navarro | `print`, `input`, `type`, `int`, `float`, `str`, `bool`, `len`, `sum`, `min` |\n",
+    "| 2 | Integrante 2 | `max`, `abs`, `round`, `pow`, `range`, `sorted`, `reversed`, `enumerate`, `zip`, `any` |\n",
+    "| 3 | Integrante 3 | `all`, `list`, `tuple`, `set`, `dict`, `format`, `isinstance`, `help`, `dir`, `open` |\n",
+    "\n",
+    "**Cómo usarlo:** ejecuta las celdas de código en orden con **Shift + Enter**. En la función `input()` el notebook pide escribir un nombre."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3531d0eb",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "# Parte 1: funciones 1 a 10\n",
+    "\n",
+    "_Desarrollada por: David Navarro_"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "20cbd1a0",
+   "metadata": {},
+   "source": [
+    "## 1. `print()`\n",
+    "\n",
+    "**¿Para qué sirve?** Muestra información en la pantalla. Es útil para comunicar resultados o revisar valores durante la ejecución.\n",
+    "\n",
+    "**Sintaxis:** `print(*objetos, sep=' ', end='\\n')`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe uno o varios valores separados por coma. `sep` define qué se pone entre ellos y `end` qué se pone al final. Devuelve `None`.\n",
+    "\n",
+    "**Ten en cuenta:** Por defecto termina cada impresión con un salto de línea. Con `print('a', 'b', sep='-')` se obtiene `a-b`.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "229f2cf3",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.458787Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.458620Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.463936Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.463001Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Hola, Python\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"Hola, Python\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e5c08c91",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** Hola, Python"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c604d993",
+   "metadata": {},
+   "source": [
+    "## 2. `input()`\n",
+    "\n",
+    "**¿Para qué sirve?** Solicita al usuario que escriba un dato y lo devuelve como texto (`str`).\n",
+    "\n",
+    "**Sintaxis:** `input(mensaje='')`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe un mensaje opcional que se muestra antes de esperar la escritura. Devuelve siempre un `str`.\n",
+    "\n",
+    "**Ten en cuenta:** Aunque el usuario escriba un número, `input()` lo entrega como texto. Si se necesita un número hay que convertirlo con `int()` o `float()`.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "39469471",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.465357Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.465190Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.468485Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.467544Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Escribe tu nombre:  DAVID\n",
+      "Hola, DAVID\n"
+     ]
+    }
+   ],
+   "source": [
+    "nombre = input(\"Escribe tu nombre: \")\n",
+    "print(\"Hola,\", nombre)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d37f56a1",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** Si se escribe Ana: Hola, Ana"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9ec3f36e",
+   "metadata": {},
+   "source": [
+    "## 3. `type()`\n",
+    "\n",
+    "**¿Para qué sirve?** Indica el tipo de dato de un valor u objeto.\n",
+    "\n",
+    "**Sintaxis:** `type(objeto)`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe un objeto y devuelve su clase, por ejemplo `<class 'int'>`.\n",
+    "\n",
+    "**Ten en cuenta:** Sirve para comprobar qué tipo tiene una variable cuando un resultado no es el esperado.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "c3d0390c",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.470010Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.469849Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.473042Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.472146Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'int'>\n",
+      "<class 'str'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(type(25))\n",
+    "print(type(\"texto\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3fc7a822",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** <class 'int'>  \n",
+    "<class 'str'>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6b4ea1e5",
+   "metadata": {},
+   "source": [
+    "## 4. `int()`\n",
+    "\n",
+    "**¿Para qué sirve?** Convierte un valor compatible en un número entero.\n",
+    "\n",
+    "**Sintaxis:** `int(x=0, base=10)`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe un número o un texto que represente un entero. Devuelve un `int`.\n",
+    "\n",
+    "**Ten en cuenta:** Si se le pasa un decimal lo trunca (`int(3.9)` da `3`). Con un texto no numérico, como `int('abc')`, lanza `ValueError`.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "cacaa92d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.474508Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.474327Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.479144Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.477683Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "21\n"
+     ]
+    }
+   ],
+   "source": [
+    "edad = int(\"20\")\n",
+    "print(edad + 1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3a1f55ca",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** 21"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "31a28f0a",
+   "metadata": {},
+   "source": [
+    "## 5. `float()`\n",
+    "\n",
+    "**¿Para qué sirve?** Convierte un valor compatible en un número decimal.\n",
+    "\n",
+    "**Sintaxis:** `float(x=0.0)`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe un número o un texto que represente un decimal. Devuelve un `float`.\n",
+    "\n",
+    "**Ten en cuenta:** Los decimales se escriben con punto, no con coma: `float('12.5')` funciona y `float('12,5')` produce un error.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "2ab5f7a9",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.480583Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.480396Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.483424Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.482731Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "25.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "precio = float(\"12.5\")\n",
+    "print(precio * 2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "baaf11cd",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** 25.0"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e44b62b4",
+   "metadata": {},
+   "source": [
+    "## 6. `str()`\n",
+    "\n",
+    "**¿Para qué sirve?** Convierte un valor en una cadena de texto.\n",
+    "\n",
+    "**Sintaxis:** `str(objeto)`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe cualquier objeto y devuelve su representación como `str`.\n",
+    "\n",
+    "**Ten en cuenta:** Es necesaria para unir texto con números usando `+`, porque Python no mezcla ambos tipos automáticamente.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "d7bdda6f",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.484853Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.484702Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.488754Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.487854Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Número: 45\n"
+     ]
+    }
+   ],
+   "source": [
+    "numero = 45\n",
+    "print(\"Número: \" + str(numero))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b07e310d",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** Número: 45"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "17bb2fa0",
+   "metadata": {},
+   "source": [
+    "## 7. `bool()`\n",
+    "\n",
+    "**¿Para qué sirve?** Convierte un valor a verdadero (`True`) o falso (`False`) según las reglas de Python.\n",
+    "\n",
+    "**Sintaxis:** `bool(x)`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe cualquier valor y devuelve `True` o `False`.\n",
+    "\n",
+    "**Ten en cuenta:** Se consideran falsos el `0`, el texto vacío `''`, las colecciones vacías (`[]`, `{}`) y `None`. Casi todo lo demás es verdadero.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "c2578282",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.490162Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.490003Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.493107Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.492252Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "True\n",
+      "False\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(bool(1))\n",
+    "print(bool(0))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a765c60b",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** True  \n",
+    "False"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "efd40053",
+   "metadata": {},
+   "source": [
+    "## 8. `len()`\n",
+    "\n",
+    "**¿Para qué sirve?** Devuelve la cantidad de elementos de una secuencia o colección, como texto, lista o tupla.\n",
+    "\n",
+    "**Sintaxis:** `len(s)`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe un texto o una colección y devuelve un entero con su tamaño.\n",
+    "\n",
+    "**Ten en cuenta:** En un texto cuenta caracteres, incluidos los espacios. Con un número, como `len(25)`, lanza `TypeError`.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "4e80d3fc",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.494399Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.494243Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.497659Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.496966Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "7\n"
+     ]
+    }
+   ],
+   "source": [
+    "fruta = \"manzana\"\n",
+    "print(len(fruta))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0cb9f6cb",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** 7"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cd17ba1c",
+   "metadata": {},
+   "source": [
+    "## 9. `sum()`\n",
+    "\n",
+    "**¿Para qué sirve?** Suma los elementos numéricos de un iterable, por ejemplo, una lista.\n",
+    "\n",
+    "**Sintaxis:** `sum(iterable, start=0)`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe un iterable de números y un valor inicial opcional. Devuelve la suma total.\n",
+    "\n",
+    "**Ten en cuenta:** Si la lista tiene decimales el resultado es decimal. No sirve para unir textos.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "a63f0ff6",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.498955Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.498773Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.502237Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.501725Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "12.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "notas = [4.0, 3.5, 4.5]\n",
+    "print(sum(notas))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b06d1ef0",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** 12.0"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4e8ef283",
+   "metadata": {},
+   "source": [
+    "## 10. `min()`\n",
+    "\n",
+    "**¿Para qué sirve?** Devuelve el menor elemento de una colección o el menor de varios argumentos comparables.\n",
+    "\n",
+    "**Sintaxis:** `min(iterable)   o   min(a, b, c, ...)`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe una colección o varios valores comparables. Devuelve el menor de ellos.\n",
+    "\n",
+    "**Ten en cuenta:** También funciona con textos, que compara por orden alfabético. Con una colección vacía lanza `ValueError`.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "9d916d0b",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.503689Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.503514Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.507782Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.506852Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "15\n"
+     ]
+    }
+   ],
+   "source": [
+    "temperaturas = [18, 22, 15, 20]\n",
+    "print(min(temperaturas))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f81a2e67",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** 15"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f8805fd2",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "# Parte 2: funciones 11 a 20\n",
+    "\n",
+    "_Desarrollada por: Integrante 2 (ejemplos aplicados a Zootecnia)_"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "oDV26u90w-RT",
+   "metadata": {
+    "id": "oDV26u90w-RT"
+   },
+   "source": [
+    "En este notebook se explican diez funciones incorporadas de Python, desde `max()` hasta `any()`. Los ejemplos se relacionan con situaciones de Zootecnia, como el peso de animales, el consumo de alimento, los registros de una granja y el seguimiento de animales.\n",
+    "\n",
+    "Reconocer para qué sirve cada función, comprender su sintaxis y aplicarla mediante ejemplos prácticos que se puedan ejecutar en Python.\n",
+    "\n",
+    "> **Instrucción:** ejecuta cada celda de código para comprobar los resultados. Los datos de los ejemplos son ficticios y se usan únicamente con fines académicos.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "QH_nM1w7w-RV",
+   "metadata": {
+    "id": "QH_nM1w7w-RV"
+   },
+   "source": [
+    "## 11. `max()`\n",
+    "\n",
+    "**¿Para qué sirve?**  \n",
+    "Devuelve el elemento de mayor valor de una colección o el mayor entre varios valores. Es útil para identificar, por ejemplo, el animal con mayor peso dentro de un grupo.\n",
+    "\n",
+    "**Sintaxis general:** `max()` se utiliza sobre uno o varios valores o colecciones, según el caso.\n",
+    "\n",
+    "**Ejemplo práctico:**\n",
+    "\n",
+    "El siguiente ejemplo aplica la función a una situación relacionada con el manejo de registros pecuarios.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "DY2Imbbqw-RV",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.509767Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.509603Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.513193Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.512498Z"
+    },
+    "id": "DY2Imbbqw-RV"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "El mayor peso registrado es: 45.2 kg\n"
+     ]
+    }
+   ],
+   "source": [
+    "pesos_kg = [42.5, 38.0, 45.2, 41.7, 39.8]\n",
+    "mayor_peso = max(pesos_kg)\n",
+    "\n",
+    "print(\"El mayor peso registrado es:\", mayor_peso, \"kg\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "L5kHqLzQw-RW",
+   "metadata": {
+    "id": "L5kHqLzQw-RW"
+   },
+   "source": [
+    "**Resultado esperado:**\n",
+    "\n",
+    "```text\n",
+    "El mayor peso registrado es: 45.2 kg\n",
+    "```\n",
+    "\n",
+    "**Interpretación:** El resultado permite comprender cómo la función ayuda a procesar información que puede aparecer en los registros de una explotación pecuaria.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "62KvzIyHw-RW",
+   "metadata": {
+    "id": "62KvzIyHw-RW"
+   },
+   "source": [
+    "## 12. `abs()`\n",
+    "\n",
+    "**¿Para qué sirve?**  \n",
+    "Devuelve el valor absoluto de un número; es decir, elimina su signo negativo. Puede utilizarse para calcular la diferencia sin signo entre un peso esperado y uno registrado.\n",
+    "\n",
+    "**Sintaxis general:** `abs()` se utiliza sobre uno o varios valores o colecciones, según el caso.\n",
+    "\n",
+    "**Ejemplo práctico:**\n",
+    "\n",
+    "El siguiente ejemplo aplica la función a una situación relacionada con el manejo de registros pecuarios.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "ba_ESLQLw-RX",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.514661Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.514498Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.518690Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.517780Z"
+    },
+    "id": "ba_ESLQLw-RX"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "La diferencia de peso es: 2.5 kg\n"
+     ]
+    }
+   ],
+   "source": [
+    "peso_esperado = 40\n",
+    "peso_registrado = 37.5\n",
+    "\n",
+    "diferencia = abs(peso_esperado - peso_registrado)\n",
+    "\n",
+    "print(\"La diferencia de peso es:\", diferencia, \"kg\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "UTxh7Lyzw-RX",
+   "metadata": {
+    "id": "UTxh7Lyzw-RX"
+   },
+   "source": [
+    "**Resultado esperado:**\n",
+    "\n",
+    "```text\n",
+    "La diferencia de peso es: 2.5 kg\n",
+    "```\n",
+    "\n",
+    "**Interpretación:** El resultado permite comprender cómo la función ayuda a procesar información que puede aparecer en los registros de una explotación pecuaria.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "sjv4TT6Ew-RX",
+   "metadata": {
+    "id": "sjv4TT6Ew-RX"
+   },
+   "source": [
+    "## 13. `round()`\n",
+    "\n",
+    "**¿Para qué sirve?**  \n",
+    "Redondea un número al número de decimales indicado. Es útil para presentar promedios o mediciones con una cantidad determinada de decimales.\n",
+    "\n",
+    "**Sintaxis general:** `round()` se utiliza sobre uno o varios valores o colecciones, según el caso.\n",
+    "\n",
+    "**Ejemplo práctico:**\n",
+    "\n",
+    "El siguiente ejemplo aplica la función a una situación relacionada con el manejo de registros pecuarios.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "Jza42hzew-RX",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.520165Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.520016Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.524295Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.523155Z"
+    },
+    "id": "Jza42hzew-RX"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Peso promedio: 33.63 kg\n"
+     ]
+    }
+   ],
+   "source": [
+    "pesos = [32.4, 34.7, 33.8]\n",
+    "promedio = sum(pesos) / len(pesos)\n",
+    "promedio_redondeado = round(promedio, 2)\n",
+    "\n",
+    "print(\"Peso promedio:\", promedio_redondeado, \"kg\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "GYiDF5UVw-RY",
+   "metadata": {
+    "id": "GYiDF5UVw-RY"
+   },
+   "source": [
+    "**Resultado esperado:**\n",
+    "\n",
+    "```text\n",
+    "Peso promedio: 33.63 kg\n",
+    "```\n",
+    "\n",
+    "**Interpretación:** El resultado permite comprender cómo la función ayuda a procesar información que puede aparecer en los registros de una explotación pecuaria.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "vWbznetDw-RY",
+   "metadata": {
+    "id": "vWbznetDw-RY"
+   },
+   "source": [
+    "## 14. `pow()`\n",
+    "\n",
+    "**¿Para qué sirve?**  \n",
+    "Calcula una potencia: eleva el primer número al exponente indicado. Con dos argumentos, `pow(base, exponente)` equivale a `base ** exponente`.\n",
+    "\n",
+    "**Sintaxis general:** `pow()` se utiliza sobre uno o varios valores o colecciones, según el caso.\n",
+    "\n",
+    "**Ejemplo práctico:**\n",
+    "\n",
+    "El siguiente ejemplo aplica la función a una situación relacionada con el manejo de registros pecuarios.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "Uv5UlkzEw-RY",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.525767Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.525619Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.528548Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.527779Z"
+    },
+    "id": "Uv5UlkzEw-RY"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Área del corral: 25 m²\n"
+     ]
+    }
+   ],
+   "source": [
+    "lado_corral = 5\n",
+    "area_corral = pow(lado_corral, 2)\n",
+    "\n",
+    "print(\"Área del corral:\", area_corral, \"m²\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "RlmT8WxQw-RY",
+   "metadata": {
+    "id": "RlmT8WxQw-RY"
+   },
+   "source": [
+    "**Resultado esperado:**\n",
+    "\n",
+    "```text\n",
+    "Área del corral: 25 m²\n",
+    "```\n",
+    "\n",
+    "**Interpretación:** El resultado permite comprender cómo la función ayuda a procesar información que puede aparecer en los registros de una explotación pecuaria.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "L7hNxDItw-RY",
+   "metadata": {
+    "id": "L7hNxDItw-RY"
+   },
+   "source": [
+    "## 15. `range()`\n",
+    "\n",
+    "**¿Para qué sirve?**  \n",
+    "Genera una secuencia de números enteros. Se utiliza frecuentemente en ciclos `for` para repetir instrucciones un número determinado de veces. El límite final no se incluye.\n",
+    "\n",
+    "**Sintaxis general:** `range()` se utiliza sobre uno o varios valores o colecciones, según el caso.\n",
+    "\n",
+    "**Ejemplo práctico:**\n",
+    "\n",
+    "El siguiente ejemplo aplica la función a una situación relacionada con el manejo de registros pecuarios.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "Q9hip_lAw-RY",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.529812Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.529664Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.533918Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.532813Z"
+    },
+    "id": "Q9hip_lAw-RY"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Registro de los primeros cinco días:\n",
+      "Día 1\n",
+      "Día 2\n",
+      "Día 3\n",
+      "Día 4\n",
+      "Día 5\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"Registro de los primeros cinco días:\")\n",
+    "for dia in range(1, 6):\n",
+    "    print(\"Día\", dia)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "mH9w9VLew-RZ",
+   "metadata": {
+    "id": "mH9w9VLew-RZ"
+   },
+   "source": [
+    "**Resultado esperado:**\n",
+    "\n",
+    "```text\n",
+    "Registro de los primeros cinco días:\n",
+    "Día 1\n",
+    "Día 2\n",
+    "Día 3\n",
+    "Día 4\n",
+    "Día 5\n",
+    "```\n",
+    "\n",
+    "**Interpretación:** El resultado permite comprender cómo la función ayuda a procesar información que puede aparecer en los registros de una explotación pecuaria.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "vDovxAIzw-RZ",
+   "metadata": {
+    "id": "vDovxAIzw-RZ"
+   },
+   "source": [
+    "## 16. `sorted()`\n",
+    "\n",
+    "**¿Para qué sirve?**  \n",
+    "Devuelve una nueva lista con los elementos ordenados. Por defecto, ordena de menor a mayor y no modifica la lista original.\n",
+    "\n",
+    "**Sintaxis general:** `sorted()` se utiliza sobre uno o varios valores o colecciones, según el caso.\n",
+    "\n",
+    "**Ejemplo práctico:**\n",
+    "\n",
+    "El siguiente ejemplo aplica la función a una situación relacionada con el manejo de registros pecuarios.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "qe83UxKGw-RZ",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.535361Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.535197Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.541660Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.540233Z"
+    },
+    "id": "qe83UxKGw-RZ"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Pesos originales: [28.5, 31.2, 27.9, 30.0]\n",
+      "Pesos ordenados: [27.9, 28.5, 30.0, 31.2]\n"
+     ]
+    }
+   ],
+   "source": [
+    "pesos = [28.5, 31.2, 27.9, 30.0]\n",
+    "pesos_ordenados = sorted(pesos)\n",
+    "\n",
+    "print(\"Pesos originales:\", pesos)\n",
+    "print(\"Pesos ordenados:\", pesos_ordenados)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "_aNHqppFw-RZ",
+   "metadata": {
+    "id": "_aNHqppFw-RZ"
+   },
+   "source": [
+    "**Resultado esperado:**\n",
+    "\n",
+    "```text\n",
+    "Pesos originales: [28.5, 31.2, 27.9, 30.0]\n",
+    "Pesos ordenados: [27.9, 28.5, 30.0, 31.2]\n",
+    "```\n",
+    "\n",
+    "**Interpretación:** El resultado permite comprender cómo la función ayuda a procesar información que puede aparecer en los registros de una explotación pecuaria.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5R93mtcOw-RZ",
+   "metadata": {
+    "id": "5R93mtcOw-RZ"
+   },
+   "source": [
+    "## 17. `reversed()`\n",
+    "\n",
+    "**¿Para qué sirve?**  \n",
+    "Permite recorrer los elementos de una secuencia en orden inverso. Devuelve un iterador; por eso, en este ejemplo se convierte a lista con `list()`.\n",
+    "\n",
+    "**Sintaxis general:** `reversed()` se utiliza sobre uno o varios valores o colecciones, según el caso.\n",
+    "\n",
+    "**Ejemplo práctico:**\n",
+    "\n",
+    "El siguiente ejemplo aplica la función a una situación relacionada con el manejo de registros pecuarios.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "Xt_f19lPw-RZ",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.543903Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.543644Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.547567Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.546451Z"
+    },
+    "id": "Xt_f19lPw-RZ"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Orden inverso: ['jueves', 'miércoles', 'martes', 'lunes']\n"
+     ]
+    }
+   ],
+   "source": [
+    "dias_registro = [\"lunes\", \"martes\", \"miércoles\", \"jueves\"]\n",
+    "dias_invertidos = list(reversed(dias_registro))\n",
+    "\n",
+    "print(\"Orden inverso:\", dias_invertidos)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "yLL2hVc9w-RZ",
+   "metadata": {
+    "id": "yLL2hVc9w-RZ"
+   },
+   "source": [
+    "**Resultado esperado:**\n",
+    "\n",
+    "```text\n",
+    "Orden inverso: ['jueves', 'miércoles', 'martes', 'lunes']\n",
+    "```\n",
+    "\n",
+    "**Interpretación:** El resultado permite comprender cómo la función ayuda a procesar información que puede aparecer en los registros de una explotación pecuaria.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8zO82Eq7w-RZ",
+   "metadata": {
+    "id": "8zO82Eq7w-RZ"
+   },
+   "source": [
+    "## 18. `enumerate()`\n",
+    "\n",
+    "**¿Para qué sirve?**  \n",
+    "Permite recorrer una colección obteniendo al mismo tiempo la posición (índice) y el elemento. Por defecto, el índice comienza en cero; se puede cambiar con `start`.\n",
+    "\n",
+    "**Sintaxis general:** `enumerate()` se utiliza sobre uno o varios valores o colecciones, según el caso.\n",
+    "\n",
+    "**Ejemplo práctico:**\n",
+    "\n",
+    "El siguiente ejemplo aplica la función a una situación relacionada con el manejo de registros pecuarios.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "VnR7atRbw-RZ",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.549303Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.549103Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.553745Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.552422Z"
+    },
+    "id": "VnR7atRbw-RZ"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1 - Bovino 101\n",
+      "2 - Bovino 102\n",
+      "3 - Bovino 103\n"
+     ]
+    }
+   ],
+   "source": [
+    "identificacion_animales = [\"Bovino 101\", \"Bovino 102\", \"Bovino 103\"]\n",
+    "\n",
+    "for posicion, animal in enumerate(identificacion_animales, start=1):\n",
+    "    print(posicion, \"-\", animal)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0-w3Czcbw-RZ",
+   "metadata": {
+    "id": "0-w3Czcbw-RZ"
+   },
+   "source": [
+    "**Resultado esperado:**\n",
+    "\n",
+    "```text\n",
+    "1 - Bovino 101\n",
+    "2 - Bovino 102\n",
+    "3 - Bovino 103\n",
+    "```\n",
+    "\n",
+    "**Interpretación:** El resultado permite comprender cómo la función ayuda a procesar información que puede aparecer en los registros de una explotación pecuaria.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "JIvc-MwPw-RZ",
+   "metadata": {
+    "id": "JIvc-MwPw-RZ"
+   },
+   "source": [
+    "## 19. `zip()`\n",
+    "\n",
+    "**¿Para qué sirve?**  \n",
+    "Combina elementos de dos o más colecciones posición por posición. Es útil para relacionar cada animal con su peso. Si las colecciones tienen longitudes diferentes, se detiene al terminar la más corta.\n",
+    "\n",
+    "**Sintaxis general:** `zip()` se utiliza sobre uno o varios valores o colecciones, según el caso.\n",
+    "\n",
+    "**Ejemplo práctico:**\n",
+    "\n",
+    "El siguiente ejemplo aplica la función a una situación relacionada con el manejo de registros pecuarios.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "U8hIpvQpw-RZ",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.555644Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.555405Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.559702Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.558623Z"
+    },
+    "id": "U8hIpvQpw-RZ"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Ternera A : 95.5 kg\n",
+      "Ternera B : 102.0 kg\n",
+      "Ternera C : 98.3 kg\n"
+     ]
+    }
+   ],
+   "source": [
+    "animales = [\"Ternera A\", \"Ternera B\", \"Ternera C\"]\n",
+    "pesos = [95.5, 102.0, 98.3]\n",
+    "\n",
+    "for animal, peso in zip(animales, pesos):\n",
+    "    print(animal, \":\", peso, \"kg\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "OkElmgDcw-RZ",
+   "metadata": {
+    "id": "OkElmgDcw-RZ"
+   },
+   "source": [
+    "**Resultado esperado:**\n",
+    "\n",
+    "```text\n",
+    "Ternera A : 95.5 kg\n",
+    "Ternera B : 102.0 kg\n",
+    "Ternera C : 98.3 kg\n",
+    "```\n",
+    "\n",
+    "**Interpretación:** El resultado permite comprender cómo la función ayuda a procesar información que puede aparecer en los registros de una explotación pecuaria.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "Hb9ztu0nw-RZ",
+   "metadata": {
+    "id": "Hb9ztu0nw-RZ"
+   },
+   "source": [
+    "## 20. `any()`\n",
+    "\n",
+    "**¿Para qué sirve?**  \n",
+    "Devuelve `True` si al menos uno de los elementos de un iterable es verdadero; devuelve `False` si ninguno lo es. En este ejemplo se comprueba si algún animal supera el umbral de temperatura definido para el ejercicio.\n",
+    "\n",
+    "**Sintaxis general:** `any()` se utiliza sobre uno o varios valores o colecciones, según el caso.\n",
+    "\n",
+    "**Ejemplo práctico:**\n",
+    "\n",
+    "El siguiente ejemplo aplica la función a una situación relacionada con el manejo de registros pecuarios.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "fnxrm9mKw-Ra",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.561625Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.561406Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.566990Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.565983Z"
+    },
+    "id": "fnxrm9mKw-Ra"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "¿Algún registro supera 39.5 °C? True\n"
+     ]
+    }
+   ],
+   "source": [
+    "temperaturas_c = [38.2, 38.7, 39.6, 38.4]\n",
+    "hay_temperatura_superior = any(temp > 39.5 for temp in temperaturas_c)\n",
+    "\n",
+    "print(\"¿Algún registro supera 39.5 °C?\", hay_temperatura_superior)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "oJXy1ULUw-Ra",
+   "metadata": {
+    "id": "oJXy1ULUw-Ra"
+   },
+   "source": [
+    "**Resultado esperado:**\n",
+    "\n",
+    "```text\n",
+    "¿Algún registro supera 39.5 °C? True\n",
+    "```\n",
+    "\n",
+    "**Interpretación:** El resultado permite comprender cómo la función ayuda a procesar información que puede aparecer en los registros de una explotación pecuaria.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "894b8b33",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "# Parte 3: funciones 21 a 30\n",
+    "\n",
+    "_Desarrollada por: Integrante 3_"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ec7cb116",
+   "metadata": {},
+   "source": [
+    "## 21. `all()`\n",
+    "\n",
+    "**¿Para qué sirve?** Devuelve `True` si todos los elementos de un iterable son verdaderos; con un iterable vacío también devuelve `True`.\n",
+    "\n",
+    "**Sintaxis:** `all(iterable)`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe un iterable. Devuelve `False` en cuanto encuentra un elemento falso.\n",
+    "\n",
+    "**Ten en cuenta:** Es la contraparte de `any()`. Es habitual para comprobar que se cumplen todos los requisitos de una lista.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "cf2a77d8",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.568864Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.568657Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.572715Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.572059Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "True\n"
+     ]
+    }
+   ],
+   "source": [
+    "requisitos = [True, True, True]\n",
+    "print(all(requisitos))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6194e19d",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** True"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdff11bf",
+   "metadata": {},
+   "source": [
+    "## 22. `list()`\n",
+    "\n",
+    "**¿Para qué sirve?** Crea una lista a partir de un iterable o una lista vacía si no se proporciona argumento.\n",
+    "\n",
+    "**Sintaxis:** `list(iterable=())`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe un iterable, como un texto o una tupla. Devuelve una lista con sus elementos.\n",
+    "\n",
+    "**Ten en cuenta:** `list('aei')` separa el texto en una lista de caracteres.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "98a12d99",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.574937Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.574718Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.578905Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.577923Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['a', 'e', 'i']\n"
+     ]
+    }
+   ],
+   "source": [
+    "vocales = list(\"aei\")\n",
+    "print(vocales)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3deeb5b5",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** ['a', 'e', 'i']"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "31d01648",
+   "metadata": {},
+   "source": [
+    "## 23. `tuple()`\n",
+    "\n",
+    "**¿Para qué sirve?** Crea una tupla, una colección ordenada que no puede modificarse después de creada.\n",
+    "\n",
+    "**Sintaxis:** `tuple(iterable=())`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe un iterable y devuelve una tupla con sus elementos.\n",
+    "\n",
+    "**Ten en cuenta:** Al ser inmutable, intentar asignar un elemento (`coordenadas[0] = 5`) produce un `TypeError`.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "ce1ecd1c",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.581287Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.581106Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.583698Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.583205Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(10, 20)\n"
+     ]
+    }
+   ],
+   "source": [
+    "coordenadas = tuple([10, 20])\n",
+    "print(coordenadas)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d3f711d6",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** (10, 20)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6d50136a",
+   "metadata": {},
+   "source": [
+    "## 24. `set()`\n",
+    "\n",
+    "**¿Para qué sirve?** Crea un conjunto, que almacena elementos únicos y elimina duplicados.\n",
+    "\n",
+    "**Sintaxis:** `set(iterable=())`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe un iterable y devuelve un conjunto sin elementos repetidos.\n",
+    "\n",
+    "**Ten en cuenta:** Un conjunto no garantiza el orden de sus elementos. Por eso el ejemplo usa `sorted()` al imprimir.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "b5a7b079",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.585368Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.585206Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.589722Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.588590Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1, 2, 3]\n"
+     ]
+    }
+   ],
+   "source": [
+    "codigos = set([1, 2, 2, 3])\n",
+    "print(sorted(codigos))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e09909c2",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** [1, 2, 3]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "febd8b37",
+   "metadata": {},
+   "source": [
+    "## 25. `dict()`\n",
+    "\n",
+    "**¿Para qué sirve?** Crea un diccionario que almacena pares de clave y valor.\n",
+    "\n",
+    "**Sintaxis:** `dict(clave=valor, ...)   o   dict(iterable_de_pares)`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe pares clave-valor. Devuelve un diccionario al que se accede por clave.\n",
+    "\n",
+    "**Ten en cuenta:** Si se consulta una clave que no existe con `persona['correo']`, lanza `KeyError`.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "ae4d88c5",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.591256Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.591089Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.595103Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.594114Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Ana\n"
+     ]
+    }
+   ],
+   "source": [
+    "persona = dict(nombre=\"Ana\", edad=21)\n",
+    "print(persona[\"nombre\"])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "339635a8",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** Ana"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "db990ae7",
+   "metadata": {},
+   "source": [
+    "## 26. `format()`\n",
+    "\n",
+    "**¿Para qué sirve?** Devuelve una representación formateada de un valor; resulta útil para presentar números con una cantidad específica de decimales.\n",
+    "\n",
+    "**Sintaxis:** `format(valor, especificador='')`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe un valor y un código de formato. Devuelve un texto. El código `.2f` indica 2 decimales fijos.\n",
+    "\n",
+    "**Ten en cuenta:** Otros códigos útiles: `,` para separador de miles y `.1%` para porcentajes.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "f19af207",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.596566Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.596384Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.599655Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.599129Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.19\n"
+     ]
+    }
+   ],
+   "source": [
+    "caudal = 0.19\n",
+    "print(format(caudal, \".2f\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5bf86287",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** 0.19"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8adae5c1",
+   "metadata": {},
+   "source": [
+    "**Otro ejemplo con más decimales y separador de miles:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "d8b68f53",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.600903Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.600748Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.607082Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.603528Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "3.14\n",
+      "1,500,000\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(format(3.14159, \".2f\"))\n",
+    "print(format(1500000, \",\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "90b755be",
+   "metadata": {},
+   "source": [
+    "## 27. `isinstance()`\n",
+    "\n",
+    "**¿Para qué sirve?** Comprueba si un objeto pertenece a un tipo de dato o a una familia de tipos.\n",
+    "\n",
+    "**Sintaxis:** `isinstance(objeto, tipo)`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe un objeto y un tipo (o una tupla de tipos). Devuelve `True` o `False`.\n",
+    "\n",
+    "**Ten en cuenta:** Se puede preguntar por varios tipos a la vez: `isinstance(5, (int, float))`.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "96699fa3",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.609028Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.608833Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.613225Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.612538Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "True\n"
+     ]
+    }
+   ],
+   "source": [
+    "caudal = 0.19\n",
+    "print(isinstance(caudal, float))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "da66e743",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** True"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b7927c35",
+   "metadata": {},
+   "source": [
+    "## 28. `help()`\n",
+    "\n",
+    "**¿Para qué sirve?** Muestra documentación de una función, tipo u objeto. En Jupyter puede usarse para consultar cómo funciona.\n",
+    "\n",
+    "**Sintaxis:** `help(objeto)`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe un objeto (sin paréntesis si es una función, como `len`). Imprime su documentación.\n",
+    "\n",
+    "**Ten en cuenta:** En Jupyter también se puede escribir `len?` para ver la ayuda en un panel.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "f72c2d41",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.615010Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.614799Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.619244Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.618111Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Help on built-in function len in module builtins:\n",
+      "\n",
+      "len(obj, /)\n",
+      "    Return the number of items in a container.\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "help(len)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0a1ff072",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** Muestra la ayuda y la descripción de len()."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "06fb5121",
+   "metadata": {},
+   "source": [
+    "## 29. `dir()`\n",
+    "\n",
+    "**¿Para qué sirve?** Devuelve una lista de nombres de atributos y métodos disponibles en un objeto o módulo.\n",
+    "\n",
+    "**Sintaxis:** `dir(objeto)`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe un objeto y devuelve una lista de nombres. Sin argumentos, lista los nombres del entorno actual.\n",
+    "\n",
+    "**Ten en cuenta:** Sirve para descubrir qué métodos tiene un texto, una lista, etc.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "c572a9e2",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.621233Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.621016Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.625181Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.624542Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "HOLA\n",
+      "True\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"hola\".upper())\n",
+    "print(\"upper\" in dir(\"hola\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "08131625",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** HOLA  \n",
+    "True"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "874bc66c",
+   "metadata": {},
+   "source": [
+    "## 30. `open()`\n",
+    "\n",
+    "**¿Para qué sirve?** Abre un archivo para leerlo o escribirlo. Conviene usar `with` para que el archivo se cierre automáticamente.\n",
+    "\n",
+    "**Sintaxis:** `open(archivo, modo='r', encoding=None)`\n",
+    "\n",
+    "**Parámetros y valor devuelto:** Recibe la ruta del archivo y el modo: `'r'` leer, `'w'` escribir (reemplaza el contenido), `'a'` agregar al final. Devuelve un objeto archivo.\n",
+    "\n",
+    "**Ten en cuenta:** Este ejemplo crea un archivo `ejemplo.txt` en la carpeta del notebook. El repositorio lo ignora con `.gitignore`.\n",
+    "\n",
+    "**Ejemplo práctico:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "a101073c",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-11-04T23:27:36.626654Z",
+     "iopub.status.busy": "2026-11-04T23:27:36.626447Z",
+     "iopub.status.idle": "2026-11-04T23:27:36.631306Z",
+     "shell.execute_reply": "2026-11-04T23:27:36.630059Z"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Primera línea\n"
+     ]
+    }
+   ],
+   "source": [
+    "with open(\"ejemplo.txt\", \"w\", encoding=\"utf-8\") as archivo:\n",
+    "    archivo.write(\"Primera línea\")\n",
+    "\n",
+    "with open(\"ejemplo.txt\", \"r\", encoding=\"utf-8\") as archivo:\n",
+    "    print(archivo.read())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6ad0560d",
+   "metadata": {},
+   "source": [
+    "**Resultado esperado:** Primera línea"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d3e8c70e",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Conclusión\n",
+    "\n",
+    "Estas funciones permiten mostrar y convertir datos, medir colecciones, calcular valores, ordenar información, recorrer secuencias y trabajar con archivos sin instalar librerías adicionales. Practicar con ejemplos pequeños ayuda a entender su comportamiento y a reutilizarlas en programas más grandes.\n",
+    "\n",
+    "**Fuente:** [Documentación oficial de Python: funciones incorporadas](https://docs.python.org/3/library/functions.html)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.18"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
