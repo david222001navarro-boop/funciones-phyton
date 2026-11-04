@@ -1,32 +1,28 @@
-[README (2).md](https://github.com/user-attachments/files/34399361/README.2.md)
-# 30 funciones básicas de Python
+[README_1_a_20 (1).md](https://github.com/user-attachments/files/34399438/README_1_a_20.1.md)
+# Funciones básicas de Python (1 a 20)
 
-Trabajo colaborativo en el que se investigan y documentan 30 funciones incorporadas (*built-in*) de Python. Para cada función se explica **para qué sirve**, su **sintaxis** y un **ejemplo práctico** con su resultado. Todo el contenido está en esta página; el mismo trabajo, ejecutable, está en el notebook [`00_funciones_python_completo.ipynb`](00_funciones_python_completo.ipynb).
+Trabajo colaborativo en el que se investigan y documentan funciones incorporadas (*built-in*) de Python. Para cada función se explica **para qué sirve**, su **sintaxis** y un **ejemplo práctico** con su resultado.
 
 **Asignatura:** Introducción a la Ciencia de Datos  
 **Docente:** Carlos Andrés Gómez
 
 ## Integrantes
 
-| Integrante | Usuario de GitHub | Funciones | Notebook original |
+| Integrante | Usuario de GitHub | Funciones | Notebook |
 |---|---|---|---|
 | David Navarro (ID 37011) | @david222001navarro-boop | 1 a 10 | [`01_funciones_1_a_10 .ipynb`](01_funciones_1_a_10%20.ipynb) |
 | Daniel Gonzales (ID 46993) | _@usuario2_ | 11 a 20 | [`Funciones_11_a_20_Python_Zootecnia.ipynb`](Funciones_11_a_20_Python_Zootecnia.ipynb) |
-| _Integrante 3_ | _@usuario3_ | 21 a 30 | _pendiente_ |
 
 Cada integrante subió su parte con su propia cuenta; los commits de cada uno están en la pestaña **Commits** del repositorio.
 
 ## Introducción
 
-Python incluye funciones incorporadas (*built-in*) que están disponibles sin instalar librerías adicionales y que se usan en casi todos los programas. En este trabajo se investigan y documentan **30 funciones básicas**. Para cada una se explica **para qué sirve**, su **sintaxis** y un **ejemplo práctico** con su resultado.
-
-El trabajo se dividió entre los integrantes y aquí se reúne en una sola página.
+Python incluye funciones incorporadas que están disponibles sin instalar librerías adicionales y que se usan en casi todos los programas. En este trabajo se explican **20 funciones básicas**, repartidas entre los integrantes.
 
 | Parte | Responsable | Funciones |
 |---|---|---|
 | 1 | David Navarro | `print`, `input`, `type`, `int`, `float`, `str`, `bool`, `len`, `sum`, `min` |
 | 2 | Daniel Gonzales | `max`, `abs`, `round`, `pow`, `range`, `sorted`, `reversed`, `enumerate`, `zip`, `any` |
-| 3 | Integrante 3 | `all`, `list`, `tuple`, `set`, `dict`, `format`, `isinstance`, `help`, `dir`, `open` |
 
 ---
 # Parte 1: funciones 1 a 10
@@ -643,284 +639,8 @@ print("¿Algún registro supera 39.5 °C?", hay_temperatura_superior)
 **Interpretación:** El resultado permite comprender cómo la función ayuda a procesar información que puede aparecer en los registros de una explotación pecuaria.
 
 ---
-# Parte 3: funciones 21 a 30
-
-_Desarrollada por: Integrante 3_
-
-## 21. `all()`
-
-**¿Para qué sirve?** Devuelve `True` si todos los elementos de un iterable son verdaderos; con un iterable vacío también devuelve `True`.
-
-**Sintaxis:** `all(iterable)`
-
-**Parámetros y valor devuelto:** Recibe un iterable. Devuelve `False` en cuanto encuentra un elemento falso.
-
-**Ten en cuenta:** Es la contraparte de `any()`. Es habitual para comprobar que se cumplen todos los requisitos de una lista.
-
-**Ejemplo práctico:**
-
-```python
-requisitos = [True, True, True]
-print(all(requisitos))
-```
-
-**Salida:**
-
-```text
-True
-```
-
-**Resultado esperado:** True
-
-## 22. `list()`
-
-**¿Para qué sirve?** Crea una lista a partir de un iterable o una lista vacía si no se proporciona argumento.
-
-**Sintaxis:** `list(iterable=())`
-
-**Parámetros y valor devuelto:** Recibe un iterable, como un texto o una tupla. Devuelve una lista con sus elementos.
-
-**Ten en cuenta:** `list('aei')` separa el texto en una lista de caracteres.
-
-**Ejemplo práctico:**
-
-```python
-vocales = list("aei")
-print(vocales)
-```
-
-**Salida:**
-
-```text
-['a', 'e', 'i']
-```
-
-**Resultado esperado:** ['a', 'e', 'i']
-
-## 23. `tuple()`
-
-**¿Para qué sirve?** Crea una tupla, una colección ordenada que no puede modificarse después de creada.
-
-**Sintaxis:** `tuple(iterable=())`
-
-**Parámetros y valor devuelto:** Recibe un iterable y devuelve una tupla con sus elementos.
-
-**Ten en cuenta:** Al ser inmutable, intentar asignar un elemento (`coordenadas[0] = 5`) produce un `TypeError`.
-
-**Ejemplo práctico:**
-
-```python
-coordenadas = tuple([10, 20])
-print(coordenadas)
-```
-
-**Salida:**
-
-```text
-(10, 20)
-```
-
-**Resultado esperado:** (10, 20)
-
-## 24. `set()`
-
-**¿Para qué sirve?** Crea un conjunto, que almacena elementos únicos y elimina duplicados.
-
-**Sintaxis:** `set(iterable=())`
-
-**Parámetros y valor devuelto:** Recibe un iterable y devuelve un conjunto sin elementos repetidos.
-
-**Ten en cuenta:** Un conjunto no garantiza el orden de sus elementos. Por eso el ejemplo usa `sorted()` al imprimir.
-
-**Ejemplo práctico:**
-
-```python
-codigos = set([1, 2, 2, 3])
-print(sorted(codigos))
-```
-
-**Salida:**
-
-```text
-[1, 2, 3]
-```
-
-**Resultado esperado:** [1, 2, 3]
-
-## 25. `dict()`
-
-**¿Para qué sirve?** Crea un diccionario que almacena pares de clave y valor.
-
-**Sintaxis:** `dict(clave=valor, ...)   o   dict(iterable_de_pares)`
-
-**Parámetros y valor devuelto:** Recibe pares clave-valor. Devuelve un diccionario al que se accede por clave.
-
-**Ten en cuenta:** Si se consulta una clave que no existe con `persona['correo']`, lanza `KeyError`.
-
-**Ejemplo práctico:**
-
-```python
-persona = dict(nombre="Ana", edad=21)
-print(persona["nombre"])
-```
-
-**Salida:**
-
-```text
-Ana
-```
-
-**Resultado esperado:** Ana
-
-## 26. `format()`
-
-**¿Para qué sirve?** Devuelve una representación formateada de un valor; resulta útil para presentar números con una cantidad específica de decimales.
-
-**Sintaxis:** `format(valor, especificador='')`
-
-**Parámetros y valor devuelto:** Recibe un valor y un código de formato. Devuelve un texto. El código `.2f` indica 2 decimales fijos.
-
-**Ten en cuenta:** Otros códigos útiles: `,` para separador de miles y `.1%` para porcentajes.
-
-**Ejemplo práctico:**
-
-```python
-caudal = 0.19
-print(format(caudal, ".2f"))
-```
-
-**Salida:**
-
-```text
-0.19
-```
-
-**Resultado esperado:** 0.19
-
-**Otro ejemplo con más decimales y separador de miles:**
-
-```python
-print(format(3.14159, ".2f"))
-print(format(1500000, ","))
-```
-
-**Salida:**
-
-```text
-3.14
-1,500,000
-```
-
-## 27. `isinstance()`
-
-**¿Para qué sirve?** Comprueba si un objeto pertenece a un tipo de dato o a una familia de tipos.
-
-**Sintaxis:** `isinstance(objeto, tipo)`
-
-**Parámetros y valor devuelto:** Recibe un objeto y un tipo (o una tupla de tipos). Devuelve `True` o `False`.
-
-**Ten en cuenta:** Se puede preguntar por varios tipos a la vez: `isinstance(5, (int, float))`.
-
-**Ejemplo práctico:**
-
-```python
-caudal = 0.19
-print(isinstance(caudal, float))
-```
-
-**Salida:**
-
-```text
-True
-```
-
-**Resultado esperado:** True
-
-## 28. `help()`
-
-**¿Para qué sirve?** Muestra documentación de una función, tipo u objeto. En Jupyter puede usarse para consultar cómo funciona.
-
-**Sintaxis:** `help(objeto)`
-
-**Parámetros y valor devuelto:** Recibe un objeto (sin paréntesis si es una función, como `len`). Imprime su documentación.
-
-**Ten en cuenta:** En Jupyter también se puede escribir `len?` para ver la ayuda en un panel.
-
-**Ejemplo práctico:**
-
-```python
-help(len)
-```
-
-**Salida:**
-
-```text
-Help on built-in function len in module builtins:
-
-len(obj, /)
-    Return the number of items in a container.
-```
-
-**Resultado esperado:** Muestra la ayuda y la descripción de len().
-
-## 29. `dir()`
-
-**¿Para qué sirve?** Devuelve una lista de nombres de atributos y métodos disponibles en un objeto o módulo.
-
-**Sintaxis:** `dir(objeto)`
-
-**Parámetros y valor devuelto:** Recibe un objeto y devuelve una lista de nombres. Sin argumentos, lista los nombres del entorno actual.
-
-**Ten en cuenta:** Sirve para descubrir qué métodos tiene un texto, una lista, etc.
-
-**Ejemplo práctico:**
-
-```python
-print("hola".upper())
-print("upper" in dir("hola"))
-```
-
-**Salida:**
-
-```text
-HOLA
-True
-```
-
-**Resultado esperado:** HOLA  
-True
-
-## 30. `open()`
-
-**¿Para qué sirve?** Abre un archivo para leerlo o escribirlo. Conviene usar `with` para que el archivo se cierre automáticamente.
-
-**Sintaxis:** `open(archivo, modo='r', encoding=None)`
-
-**Parámetros y valor devuelto:** Recibe la ruta del archivo y el modo: `'r'` leer, `'w'` escribir (reemplaza el contenido), `'a'` agregar al final. Devuelve un objeto archivo.
-
-**Ten en cuenta:** Este ejemplo crea un archivo `ejemplo.txt` en la carpeta del notebook. El repositorio lo ignora con `.gitignore`.
-
-**Ejemplo práctico:**
-
-```python
-with open("ejemplo.txt", "w", encoding="utf-8") as archivo:
-    archivo.write("Primera línea")
-
-with open("ejemplo.txt", "r", encoding="utf-8") as archivo:
-    print(archivo.read())
-```
-
-**Salida:**
-
-```text
-Primera línea
-```
-
-**Resultado esperado:** Primera línea
-
----
 ## Conclusión
 
-Estas funciones permiten mostrar y convertir datos, medir colecciones, calcular valores, ordenar información, recorrer secuencias y trabajar con archivos sin instalar librerías adicionales. Practicar con ejemplos pequeños ayuda a entender su comportamiento y a reutilizarlas en programas más grandes.
+Estas funciones permiten mostrar y leer datos, convertir tipos, medir colecciones, hacer cálculos, ordenar, combinar y recorrer datos. Practicar con ejemplos pequeños ayuda a entender su comportamiento y a reutilizarlas en programas más grandes.
 
 **Fuente:** [Documentación oficial de Python: funciones incorporadas](https://docs.python.org/3/library/functions.html)
