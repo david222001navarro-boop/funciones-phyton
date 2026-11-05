@@ -649,7 +649,7 @@ Estas funciones permiten mostrar y leer datos, convertir tipos, medir coleccione
 ---
 # Parte 3: funciones 21 a 30
 
-_Desarrollada por: Manuela Romero (ejemplos aplicados a Medicina Veterinaria)
+Desarrollada por: Manuela Romero (ejemplos aplicados a Medicina Veterinaria)
 
 En esta parte se presentan diez funciones incorporadas de Python mediante ejemplos académicos relacionados con la práctica veterinaria. Los datos son ficticios y se usan únicamente con fines educativos.
 
