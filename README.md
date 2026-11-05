@@ -11,7 +11,7 @@ Trabajo colaborativo en el que se investigan y documentan funciones incorporadas
 |---|---|---|---|
 | David Navarro (ID 37011) | @david222001navarro-boop | 1 a 10 | [`01_funciones_1_a_10 .ipynb`](01_funciones_1_a_10%20.ipynb) |
 | Daniel Gonzales (ID 46993) | _@usuario2_ | 11 a 20 | [`Funciones_11_a_20_Python_Zootecnia.ipynb`](Funciones_11_a_20_Python_Zootecnia.ipynb) |
-| Manuela Romero | @Romeror2 (ID 37973) | 21 a 30 | [Funciones_21_a_30_Python_Veterinaria.ipynb](Funciones_21_a_30_Python_Veterinaria.ipynb) |
+| Manuela Romero (ID 37973) | @Romeror2 | 21 a 30 | [Funciones_21_a_30_Python_Veterinaria.ipynb](Funciones_21_a_30_Python_Veterinaria.ipynb) |
 
 Cada integrante puede subir su parte con su propia cuenta; los commits quedan visibles en la pestaña **Commits** del repositorio. Completa el nombre y usuario de GitHub de la Parte 3 antes de compartir el README.
 
